@@ -20,7 +20,13 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build"],
+  "paths": {
+    "@/*": ["src/*"],
+    "@models/*": ["src/models/*"],
+    "@components/*": ["src/components/*"],
+    "@routes/*": ["src/routes/*"],
+    "@consts/*": ["src/consts/*"]
+  }
 }

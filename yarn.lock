@@ -1567,6 +1567,13 @@
     prop-types "^15.8.1"
     react-is "^17.0.2"
 
+"@mui/icons-material@^5.8.0":
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-5.8.0.tgz#c85768434bda885c64a8e4b9e222e73912244570"
+  integrity sha512-ScwLxa0q5VYV70Jfc60V/9VD0b9SvIeZ0Jddx2Dt2pBUFFO9vKdrbt9LYiT+4p21Au5NdYIb2XSHj46CLN1v3g==
+  dependencies:
+    "@babel/runtime" "^7.17.2"
+
 "@mui/material@^5.7.0":
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/@mui/material/-/material-5.7.0.tgz#94f326ce517fc3fcaf1b744b4358af3daf8dcac6"
@@ -6061,6 +6068,11 @@ klona@^2.0.4, klona@^2.0.5:
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.5.tgz#d166574d90076395d9963aa7a928fabb8d76afbc"
   integrity sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ==
 
+ky@^0.30.0:
+  version "0.30.0"
+  resolved "https://registry.yarnpkg.com/ky/-/ky-0.30.0.tgz#a3d293e4f6c4604a9a4694eceb6ce30e73d27d64"
+  integrity sha512-X/u76z4JtDVq10u1JA5UQfatPxgPaVDMYTrgHyiTpGN2z4TMEJkIHsoSBBSg9SWZEIXTKsi9kHgiQ9o3Y/4yog==
+
 language-subtag-registry@~0.3.2:
   version "0.3.21"
   resolved "https://registry.yarnpkg.com/language-subtag-registry/-/language-subtag-registry-0.3.21.tgz#04ac218bea46f04cb039084602c6da9e788dd45a"
@@ -7632,6 +7644,13 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-toastify@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-9.0.1.tgz#2f3abd26a75efd55a82cb9c0a897c865218ea420"
+  integrity sha512-c2zeZHkCX+WXuItS/JRqQ/8CH8Qm/je+M0rt09xe9fnu5YPJigtNOdD8zX4fwLA093V2am3abkGfOowwpkrwOQ==
+  dependencies:
+    clsx "^1.1.1"
+
 react-transition-group@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.2.tgz#8b59a56f09ced7b55cbd53c36768b922890d5470"
@@ -7684,11 +7703,6 @@ recursive-readdir@^2.2.2:
   integrity sha512-nRCcW9Sj7NuZwa2XvH9co8NPeXUBhZP7CRKJtU+cS6PW9FpCIFoI5ib0NT1ZrbNuPoRy0ylyCaUL8Gih4LSyFg==
   dependencies:
     minimatch "3.0.4"
-
-redaxios@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/redaxios/-/redaxios-0.5.0.tgz#321aca81880b14da2fd83be82731876a1513e83b"
-  integrity sha512-qmEJjQF0igI+H9SDKlQdWz6XskJ5zm2s6KPY0AvtlbQtRNe1OcuJIfxGmySDCpoU18/UtC7zWEFIWpkHMZ1/Ow==
 
 redent@^3.0.0:
   version "3.0.0"

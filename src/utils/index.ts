@@ -1,5 +1,3 @@
-export const test = {};
-
 export const connectLocalStorage = (key: string) => {
   const handle = (state: any) => {
     localStorage.setItem(key, window.btoa(JSON.stringify(state)));

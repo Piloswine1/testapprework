@@ -1,5 +1,8 @@
 import { FC } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useStore } from 'effector-react';
+
+import { $auth, logout } from '../models/auth';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -8,8 +11,6 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import LogoutIcon from '@mui/icons-material/Logout';
 import IconButton from '@mui/material/IconButton';
-import { useStore } from 'effector-react';
-import { $auth, logout } from '../models/auth';
 
 type Link = {
   label: string;

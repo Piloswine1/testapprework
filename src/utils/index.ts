@@ -1,4 +1,5 @@
 export const connectLocalStorage = (key: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handle = (state: any) => {
     localStorage.setItem(key, window.btoa(JSON.stringify(state)));
   };

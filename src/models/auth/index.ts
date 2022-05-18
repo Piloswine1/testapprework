@@ -1,12 +1,7 @@
 import { createEffect, createEvent, createStore } from 'effector-logger';
-import { Credentials, Token } from './auth.types';
+import { AuthStore, Credentials, Token } from './auth.types';
 import { connectLocalStorage } from '../../utils';
 import { AllEndpoints } from '../../api';
-
-type AuthStore = {
-  isAuthenticated: boolean;
-  token: Token | null;
-};
 
 const STORAGE_KEY = 'AUTH';
 

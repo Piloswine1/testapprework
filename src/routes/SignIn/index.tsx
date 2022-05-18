@@ -12,7 +12,8 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import { loginFx } from '../../models/auth';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Container } from '@mui/material';
+import { get } from 'lodash-es';
 
 const SignIn: FC = () => {
   const [isLoading, setLoading] = useState(false);
@@ -21,18 +22,31 @@ const SignIn: FC = () => {
     handleSubmit,
     register,
     formState: { errors },
+    setError,
   } = useForm<SignInForm>({
     resolver: yupResolver(SignInScheme),
   });
 
   const onSubmit = handleSubmit(data => {
     setLoading(true);
-    loginFx(data).finally(() => setLoading(false));
+    loginFx(data)
+      .catch(async err => {
+        setError('username', {
+          message: get(err, 'message', null),
+        });
+      })
+      .finally(() => setLoading(false));
   });
 
-  if (isLoading) return <CircularProgress />;
+  if (isLoading)
+    return (
+      <Container sx={{ mt: 4, display: 'flex', alignItems: 'center', justifyItems: 'center' }}>
+        <CircularProgress />
+      </Container>
+    );
+
   return (
-    <Box component="form" noValidate onSubmit={onSubmit} sx={{ mt: 3 }}>
+    <Box component="form" noValidate onSubmit={onSubmit} sx={{ mt: 10 }}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <TextField

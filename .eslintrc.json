@@ -26,12 +26,12 @@
     }
   },
   "rules": {
-    "react/jsx-key": "error",
+    "react/jsx-key": "warn",
     "object-curly-spacing": ["warn", "always"],
-    "prettier/prettier": ["error", { "quoteProps": "as-needed" }],
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "prettier/prettier": ["warn", { "quoteProps": "as-needed" }],
+    "no-plusplus": ["warn", { "allowForLoopAfterthoughts": true }],
     "import/no-extraneous-dependencies": [
-      "error",
+      "warn",
       {
         "devDependencies": [
           "**/*.test.js",
@@ -51,7 +51,7 @@
     "consistent-return": "off",
     "arrow-body-style": "off",
     "react/prop-types": "off",
-    "no-console": "error"
+    "no-console": "warn"
   },
   "env": {
     "es6": true,

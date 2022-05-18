@@ -1,9 +1,10 @@
 import ky from 'ky';
-import { chain, get, has, tap } from 'lodash-es';
+import { get, has } from 'lodash-es';
 import { toast } from 'react-toastify';
+import { $token } from '../models/auth';
 import { authEndpoints } from '../models/auth/auth.api';
 
-const kyInstancce = ky.create({
+let kyInstancce = ky.create({
   prefixUrl: process.env.REACT_APP_API + '/',
   hooks: {
     beforeError: [
@@ -15,6 +16,15 @@ const kyInstancce = ky.create({
       },
     ],
   },
+});
+
+// eslint-disable-next-line effector/no-watch
+$token.watch(token => {
+  kyInstancce = kyInstancce.extend({
+    headers: {
+      Authorization: token ? `Bearer_${token}` : undefined,
+    },
+  });
 });
 
 export const AllEndpoints = {

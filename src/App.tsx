@@ -1,11 +1,14 @@
 import { BrowserRouter } from 'react-router-dom';
+import { SWRConfig } from 'swr';
 import AppRoutes from './routes';
 
 function App() {
   return (
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
+    <SWRConfig>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </SWRConfig>
   );
 }
 

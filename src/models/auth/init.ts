@@ -1,7 +1,8 @@
-import { $auth, loginFx } from '.';
+import { $auth, authLocalStorage, loginFx } from '.';
 
-$auth.on(loginFx.doneData, (state, token) => {
-  state.isAuthenticated = true;
-  state.isLoading = false;
-  state.token = token;
-});
+$auth.watch(authLocalStorage);
+
+$auth.on(loginFx.doneData, (_, token) => ({
+  isAuthenticated: true,
+  token: token,
+}));

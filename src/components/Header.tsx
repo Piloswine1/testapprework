@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
+import { useStore } from 'effector-react';
+import { $auth } from '../models/auth';
 
 type Link = {
   label: string;
@@ -16,6 +18,8 @@ type Props = {
   links: Link[];
 };
 const Header: FC<Props> = ({ links }) => {
+  const { isAuthenticated } = useStore($auth);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -30,6 +34,11 @@ const Header: FC<Props> = ({ links }) => {
               </NavLink>
             ))}
           </Box>
+          {isAuthenticated && (
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Authorised
+            </Typography>
+          )}
         </Container>
       </AppBar>
     </Box>

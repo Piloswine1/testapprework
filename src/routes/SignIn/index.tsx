@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link as RouterLink } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -11,8 +11,12 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
+import { loginFx } from '../../models/auth';
+import { CircularProgress } from '@mui/material';
 
 const SignIn: FC = () => {
+  const [isLoading, setLoading] = useState(false);
+
   const {
     handleSubmit,
     register,
@@ -21,10 +25,12 @@ const SignIn: FC = () => {
     resolver: yupResolver(SignInScheme),
   });
 
-  const onSubmit = handleSubmit(async data => {
-    console.log(data); //eslint-disable-line no-console
+  const onSubmit = handleSubmit(data => {
+    setLoading(true);
+    loginFx(data).finally(() => setLoading(false));
   });
 
+  if (isLoading) return <CircularProgress />;
   return (
     <Box component="form" noValidate onSubmit={onSubmit} sx={{ mt: 3 }}>
       <Grid container spacing={2}>

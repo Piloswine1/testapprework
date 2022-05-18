@@ -1,13 +1,15 @@
 import { FC } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
+import LogoutIcon from '@mui/icons-material/Logout';
+import IconButton from '@mui/material/IconButton';
 import { useStore } from 'effector-react';
-import { $auth } from '../models/auth';
+import { $auth, logout } from '../models/auth';
 
 type Link = {
   label: string;
@@ -18,27 +20,45 @@ type Props = {
   links: Link[];
 };
 const Header: FC<Props> = ({ links }) => {
+  const navigate = useNavigate();
   const { isAuthenticated } = useStore($auth);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Container maxWidth="md">
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            App
-          </Typography>
-          <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{ flexGrow: 1, my: 1, display: 'flex', alignItems: 'center' }}>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              App
+            </Typography>
             {links.map(({ to, label }) => (
               <NavLink to={to} key={label}>
                 <Button>{label}</Button>
               </NavLink>
             ))}
+            {isAuthenticated && (
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}
+              >
+                <Typography variant="h6" component="div">
+                  Authorised
+                </Typography>
+                <IconButton
+                  onClick={() => {
+                    logout();
+                    navigate('/');
+                  }}
+                >
+                  <LogoutIcon />
+                </IconButton>
+              </Box>
+            )}
           </Box>
-          {isAuthenticated && (
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Authorised
-            </Typography>
-          )}
         </Container>
       </AppBar>
     </Box>

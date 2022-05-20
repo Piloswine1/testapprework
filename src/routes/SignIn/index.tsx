@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link as RouterLink } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -11,39 +11,20 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
-import { loginFx } from '../../models/auth';
-import { CircularProgress, Container } from '@mui/material';
-import { get } from 'lodash-es';
+import authApi from '../../models/auth/auth.api';
 
 const SignIn: FC = () => {
-  const [isLoading, setLoading] = useState(false);
-
   const {
     handleSubmit,
     register,
     formState: { errors },
-    setError,
   } = useForm<SignInForm>({
     resolver: yupResolver(SignInScheme),
   });
 
   const onSubmit = handleSubmit(data => {
-    setLoading(true);
-    loginFx(data)
-      .catch(async err => {
-        setError('username', {
-          message: get(err, 'message', null),
-        });
-      })
-      .finally(() => setLoading(false));
+    authApi.login({ json: data });
   });
-
-  if (isLoading)
-    return (
-      <Container sx={{ mt: 4, display: 'flex', alignItems: 'center', justifyItems: 'center' }}>
-        <CircularProgress />
-      </Container>
-    );
 
   return (
     <Box component="form" noValidate onSubmit={onSubmit} sx={{ mt: 10 }}>

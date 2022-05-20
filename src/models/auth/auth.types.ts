@@ -12,3 +12,10 @@ export type AuthStore = {
   isAuthenticated: boolean;
   token: Token | null;
 };
+
+export type RegistrationRequest = {
+  username: string;
+  password: string;
+  firstname: string;
+  lastname: string;
+};

@@ -1,10 +1,9 @@
-import { $auth, authLocalStorage, loginFx, logout } from '.';
+import { $auth, authLocalStorage } from '.';
+import authApi from './auth.api';
 
 $auth.watch(authLocalStorage); // eslint-disable-line effector/no-watch
 
-$auth.on(loginFx.doneData, (_, token) => ({
+$auth.on(authApi.login.doneData, (_, token) => ({
   isAuthenticated: true,
   token: token,
 }));
-
-$auth.reset([logout]);

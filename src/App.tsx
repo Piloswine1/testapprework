@@ -4,13 +4,11 @@ import { ToastContainer } from 'react-toastify';
 
 import AppRoutes from './routes';
 
-import kyInstancce from './api';
-
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
-    <SWRConfig value={{ fetcher: kyInstancce }}>
+    <SWRConfig value={{}}>
       <BrowserRouter>
         <AppRoutes />
       </BrowserRouter>

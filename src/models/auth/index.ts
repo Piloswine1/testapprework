@@ -1,7 +1,6 @@
-import { createEffect, createEvent, createStore } from 'effector-logger';
-import { AuthStore, Credentials, Token } from './auth.types';
+import { createEvent, createStore } from 'effector-logger';
+import { AuthStore } from './auth.types';
 import { connectLocalStorage } from '../../utils';
-import { AllEndpoints } from '../../api';
 
 const STORAGE_KEY = 'AUTH';
 
@@ -15,10 +14,6 @@ export const $auth = createStore<AuthStore>(
     isAuthenticated: false,
     token: null,
   }),
-);
+).reset([logout]);
 
 export const $token = $auth.map(state => state.token);
-
-export const loginFx = createEffect<Credentials, Token | null>(data =>
-  AllEndpoints.auth.login(data),
-);

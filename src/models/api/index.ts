@@ -11,6 +11,7 @@ const kyInstance = ky.create({
 
 const getRefresh = (token?: Token | null) =>
   kyInstance.post('app/refresh-token', { json: token }).json<Token>();
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const callApi = <T = any>(
   url: string,
   options: Options = { headers: {} },
@@ -36,8 +37,10 @@ export const fetchWithTokenFx = createEffect(async ({ url, options, token }: Req
   }
 });
 
+//   eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const makeEndpoint = <Req = any, Res = any>(
   url: string,
+  //   eslint-disable-next-line @typescript-eslint/no-explicit-any
   oldOptions?: BaseRequest<any>,
 ): Effect<BaseRequest<Req>, Res> =>
   attach({
